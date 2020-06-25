@@ -1,8 +1,11 @@
 /*
  * serializeForm
- * https://github.com/danheberden/serializeForm
+ * Make an object out of form elements. 
+ * Fixed error parse the select el with name as array(somename[]) and multiple values.
+ * Forked by emeric.lee
+ * https://github.com/EmericLee/jquery-serializeForm
  *
- * Copyright (c) 2012 Dan Heberden
+ * Copyright (c) 2012 Dan Heberden  
  * Licensed under the MIT, GPL licenses.
  */
 (function( $ ){
@@ -38,7 +41,11 @@
 
         // at the end, push or assign the value
         if ( lookup.length !==  undefined ) {
-          lookup.push( $el.val() );
+          if( $el.val().length !== undefined ){
+            lookup.push.apply(lookup,$el.val());
+          }else{
+            lookup.push( $el.val() );
+          }
         }else {
           lookup[ named[ cap ] ]  = $el.val();
         }
