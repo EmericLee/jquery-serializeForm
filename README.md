@@ -1,6 +1,8 @@
 # serializeForm
 
-Make an object out of form elements
+Make an object out of form elements. Fixed issue for select with name as array(somename[]) and multiple values.
+
+Forked by emeric.lee
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
